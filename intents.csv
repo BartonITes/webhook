@@ -1,6 +1,43 @@
 intent,phrase,response
 Fever,I have a fever,I see you have a fever. How severe is it? (mild, moderate, severe)
 Fever,My temperature is high,I see you have a fever. How severe is it? (mild, moderate, severe)
+Fever,Feeling hot and shivery,I see you have a fever. How severe is it? (mild, moderate, severe)
+Fever,Body is aching,I see you have a fever. How severe is it? (mild, moderate, severe)
+Fever,Running a temperature,I see you have a fever. How severe is it? (mild, moderate, severe)
+Fever,My body feels warm,I see you have a fever. How severe is it? (mild, moderate, severe)
+Fever,High fever since morning,I see you have a fever. How severe is it? (mild, moderate, severe)
+Fever,I'm shivering and cold,I see you have a fever. How severe is it? (mild, moderate, severe)
+Fever,Feeling feverish,I see you have a fever. How severe is it? (mild, moderate, severe)
+Fever,Temperature around 101,I see you have a fever. How severe is it? (mild, moderate, severe)
 Cough,I have a cough,I see you have a cough. How long has it lasted?
 Cough,I'm coughing a lot,I see you have a cough. How long has it lasted?
-Emergency,I feel chest pain,⚠️ This seems like an emergency. Please call emergency services immediately.
+Cough,My throat is ticklish and I cough,I see you have a cough. How long has it lasted?
+Cough,Dry cough since yesterday,I see you have a cough. How long has it lasted?
+Cough,Constant coughing,I see you have a cough. How long has it lasted?
+Cough,Coughing with phlegm,I see you have a cough. How long has it lasted?
+Cough,Cough and throat pain,I see you have a cough. How long has it lasted?
+Cough,Coughing frequently,I see you have a cough. How long has it lasted?
+Headache,I have a headache,I see you have a headache. How severe is it?
+Headache,My head hurts,I see you have a headache. How severe is it?
+Headache,Migraine since morning,I see you have a headache. How severe is it?
+Headache,Persistent headache,I see you have a headache. How severe is it?
+Headache,Pressure in head,I see you have a headache. How severe is it?
+Headache,Throbbing head pain,I see you have a headache. How severe is it?
+Emergency,I feel chest pain,⚠️ This seems like an emergency. Please call emergency services immediately
+Emergency,Sharp pain in chest,⚠️ This seems like an emergency. Please call emergency services immediately
+Emergency,Shortness of breath,⚠️ This seems like an emergency. Please call emergency services immediately
+Emergency,Dizzy and chest hurts,⚠️ This seems like an emergency. Please call emergency services immediately
+Emergency,Feeling faint,⚠️ This seems like an emergency. Please call emergency services immediately
+Emergency,Tightness in chest,⚠️ This seems like an emergency. Please call emergency services immediately
+Emergency,Severe chest discomfort,⚠️ This seems like an emergency. Please call emergency services immediately
+OtherSymptoms,I feel nauseous,It seems you are feeling nauseous. Can you describe more about your symptoms?
+OtherSymptoms,Feeling sick,It seems you are feeling nauseous. Can you describe more about your symptoms?
+OtherSymptoms,Vomiting since morning,It seems you are feeling nauseous. Can you describe more about your symptoms?
+OtherSymptoms,Feeling tired and weak,It seems you are fatigued. Rest and hydration are recommended.
+OtherSymptoms,Muscle aches,It seems you have muscle aches. Consider rest and hydration.
+OtherSymptoms,Sore throat,It seems you have a sore throat. Warm fluids and rest may help.
+OtherSymptoms,Runny nose,It seems you have a runny nose. Monitor for other symptoms.
+OtherSymptoms,Chills and shivers,It seems you have a fever. How severe is it? (mild, moderate, severe)
+OtherSymptoms,Body fatigue,It seems you are fatigued. Rest and hydration are recommended.
+OtherSymptoms,Feeling cold and shivery,It seems you have a fever. How severe is it? (mild, moderate, severe)
+
