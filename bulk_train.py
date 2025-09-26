@@ -2,17 +2,25 @@ import os
 import csv
 from google.cloud import dialogflow_v2 as dialogflow
 
-# 1. Set Google Service Account JSON
+# -------------------------------
+# 1. Set your Google Service Account
+# -------------------------------
 os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "path/to/service-account.json"
 
-# 2. Dialogflow project ID
+# -------------------------------
+# 2. Your Dialogflow Project ID
+# -------------------------------
 PROJECT_ID = "YOUR_PROJECT_ID"
 
-# 3. Initialize client
+# -------------------------------
+# 3. Initialize Dialogflow client
+# -------------------------------
 client = dialogflow.IntentsClient()
 parent = dialogflow.AgentsClient.agent_path(PROJECT_ID)
 
-# 4. Load CSV
+# -------------------------------
+# 4. Load intents from CSV
+# -------------------------------
 csv_file = "intents.csv"
 intents_dict = {}
 
@@ -28,7 +36,9 @@ with open(csv_file, "r", encoding="utf-8") as file:
         intents_dict[intent_name]["phrases"].append(phrase)
         intents_dict[intent_name]["responses"].add(response)
 
-# 5. Create intents
+# -------------------------------
+# 5. Create intents in Dialogflow
+# -------------------------------
 for intent_name, data in intents_dict.items():
     training_phrases = []
     for phrase in data["phrases"]:
@@ -48,3 +58,5 @@ for intent_name, data in intents_dict.items():
 
     response = client.create_intent(request={"parent": parent, "intent": intent})
     print(f"Created intent: {response.display_name}")
+
+print("\n✅ All intents from CSV have been pushed to Dialogflow!")
