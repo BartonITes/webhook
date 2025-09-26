@@ -1,33 +1,11 @@
 from flask import Flask, request, jsonify
+import os
 
 app = Flask(__name__)
 
-# Helper function to classify severity
-def classify_triage(symptom, severity, duration):
-    red_flags = ['chest pain', 'shortness of breath', 'dizziness']
-    severity_score = extract_severity_score(severity)
-
-    if symptom in red_flags and severity_score >= 7:
-        return "urgent"
-    elif severity_score <= 3 and "day" in duration.lower():
-        return "selfcare"
-    else:
-        return "routine"
-
-def extract_severity_score(severity):
-    try:
-        for token in severity.split():
-            if token.isdigit():
-                return int(token)
-        if "mild" in severity:
-            return 2
-        elif "moderate" in severity:
-            return 5
-        elif "severe" in severity:
-            return 8
-    except:
-        return 5  # default
-    return 5
+@app.route('/')
+def home():
+    return "Dialogflow Webhook is live!"
 
 @app.route('/webhook', methods=['POST'])
 def webhook():
@@ -59,6 +37,33 @@ def webhook():
 
     return jsonify({"fulfillmentText": fulfillment_text})
 
+def classify_triage(symptom, severity, duration):
+    red_flags = ['chest pain', 'shortness of breath', 'dizziness']
+    severity_score = extract_severity_score(severity)
 
+    if symptom in red_flags and severity_score >= 7:
+        return "urgent"
+    elif severity_score <= 3 and "day" in duration.lower():
+        return "selfcare"
+    else:
+        return "routine"
+
+def extract_severity_score(severity):
+    try:
+        for token in severity.split():
+            if token.isdigit():
+                return int(token)
+        if "mild" in severity:
+            return 2
+        elif "moderate" in severity:
+            return 5
+        elif "severe" in severity:
+            return 8
+    except:
+        return 5
+    return 5
+
+# 🔧 Fix: Use 0.0.0.0 and dynamic port from Render
 if __name__ == '__main__':
-    app.run(debug=True)
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host='0.0.0.0', port=port, debug=True)
