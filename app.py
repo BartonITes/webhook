@@ -40,8 +40,7 @@ def webhook():
         )
     elif triage_result == "routine":
         fulfillment_text = (
-            "This doesn't appear to be an emergency. "
-            "Would you like to schedule an appointment with a doctor?"
+           
         )
     else:
         fulfillment_text = (
