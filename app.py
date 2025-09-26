@@ -24,8 +24,7 @@ def webhook():
     if intent_name.lower() == "default fallback intent":
         log_unrecognized(query_text)
         fulfillment_text = (
-            f"Sorry, I didn’t quite understand \"{query_text}\". "
-            "Could you rephrase it, or describe your symptom differently?"
+            
         )
         return jsonify({"fulfillmentText": fulfillment_text})
 
@@ -34,9 +33,7 @@ def webhook():
 
     if triage_result == "urgent":
         fulfillment_text = (
-            "Based on your symptoms, this may be urgent. "
-            "I recommend seeking immediate medical attention. "
-            "Would you like me to connect you to a medical assistant?"
+           
         )
     elif triage_result == "routine":
         fulfillment_text = (
@@ -44,8 +41,7 @@ def webhook():
         )
     else:
         fulfillment_text = (
-            "It seems like a mild condition. You can try resting and staying hydrated. "
-            "Let me know if you'd like help with anything else."
+           
         )
 
     return jsonify({"fulfillmentText": fulfillment_text})
