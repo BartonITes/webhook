@@ -1,0 +1,6 @@
+intent,phrase,response
+Fever,I have a fever,I see you have a fever. How severe is it? (mild, moderate, severe)
+Fever,My temperature is high,I see you have a fever. How severe is it? (mild, moderate, severe)
+Cough,I have a cough,I see you have a cough. How long has it lasted?
+Cough,I'm coughing a lot,I see you have a cough. How long has it lasted?
+Emergency,I feel chest pain,⚠️ This seems like an emergency. Please call emergency services immediately.
