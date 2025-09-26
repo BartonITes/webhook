@@ -2,42 +2,49 @@ intent,phrase,response
 Fever,I have a fever,I see you have a fever. How severe is it? (mild, moderate, severe)
 Fever,My temperature is high,I see you have a fever. How severe is it? (mild, moderate, severe)
 Fever,Feeling hot and shivery,I see you have a fever. How severe is it? (mild, moderate, severe)
-Fever,Body is aching,I see you have a fever. How severe is it? (mild, moderate, severe)
-Fever,Running a temperature,I see you have a fever. How severe is it? (mild, moderate, severe)
-Fever,My body feels warm,I see you have a fever. How severe is it? (mild, moderate, severe)
-Fever,High fever since morning,I see you have a fever. How severe is it? (mild, moderate, severe)
-Fever,I'm shivering and cold,I see you have a fever. How severe is it? (mild, moderate, severe)
-Fever,Feeling feverish,I see you have a fever. How severe is it? (mild, moderate, severe)
-Fever,Temperature around 101,I see you have a fever. How severe is it? (mild, moderate, severe)
+Fever,Body is aching with fever,I see you have a fever. How severe is it? (mild, moderate, severe)
+Fever,High temperature since morning,I see you have a fever. How severe is it? (mild, moderate, severe)
 Cough,I have a cough,I see you have a cough. How long has it lasted?
 Cough,I'm coughing a lot,I see you have a cough. How long has it lasted?
-Cough,My throat is ticklish and I cough,I see you have a cough. How long has it lasted?
 Cough,Dry cough since yesterday,I see you have a cough. How long has it lasted?
-Cough,Constant coughing,I see you have a cough. How long has it lasted?
-Cough,Coughing with phlegm,I see you have a cough. How long has it lasted?
-Cough,Cough and throat pain,I see you have a cough. How long has it lasted?
-Cough,Coughing frequently,I see you have a cough. How long has it lasted?
+Cough,Cough with phlegm,I see you have a cough. How long has it lasted?
 Headache,I have a headache,I see you have a headache. How severe is it?
-Headache,My head hurts,I see you have a headache. How severe is it?
+Headache,Throbbing head pain,I see you have a headache. How severe is it?
 Headache,Migraine since morning,I see you have a headache. How severe is it?
 Headache,Persistent headache,I see you have a headache. How severe is it?
 Headache,Pressure in head,I see you have a headache. How severe is it?
-Headache,Throbbing head pain,I see you have a headache. How severe is it?
-Emergency,I feel chest pain,⚠️ This seems like an emergency. Please call emergency services immediately
-Emergency,Sharp pain in chest,⚠️ This seems like an emergency. Please call emergency services immediately
-Emergency,Shortness of breath,⚠️ This seems like an emergency. Please call emergency services immediately
-Emergency,Dizzy and chest hurts,⚠️ This seems like an emergency. Please call emergency services immediately
-Emergency,Feeling faint,⚠️ This seems like an emergency. Please call emergency services immediately
-Emergency,Tightness in chest,⚠️ This seems like an emergency. Please call emergency services immediately
-Emergency,Severe chest discomfort,⚠️ This seems like an emergency. Please call emergency services immediately
-OtherSymptoms,I feel nauseous,It seems you are feeling nauseous. Can you describe more about your symptoms?
-OtherSymptoms,Feeling sick,It seems you are feeling nauseous. Can you describe more about your symptoms?
-OtherSymptoms,Vomiting since morning,It seems you are feeling nauseous. Can you describe more about your symptoms?
-OtherSymptoms,Feeling tired and weak,It seems you are fatigued. Rest and hydration are recommended.
-OtherSymptoms,Muscle aches,It seems you have muscle aches. Consider rest and hydration.
-OtherSymptoms,Sore throat,It seems you have a sore throat. Warm fluids and rest may help.
-OtherSymptoms,Runny nose,It seems you have a runny nose. Monitor for other symptoms.
-OtherSymptoms,Chills and shivers,It seems you have a fever. How severe is it? (mild, moderate, severe)
-OtherSymptoms,Body fatigue,It seems you are fatigued. Rest and hydration are recommended.
-OtherSymptoms,Feeling cold and shivery,It seems you have a fever. How severe is it? (mild, moderate, severe)
-
+Emergency,Chest pain and shortness of breath,⚠️ This seems like an emergency. Please call emergency services immediately
+Emergency,Feeling severe chest discomfort,⚠️ This seems like an emergency. Please call emergency services immediately
+Emergency,Sharp pain in chest and dizziness,⚠️ This seems like an emergency. Please call emergency services immediately
+SoreThroat,My throat hurts,It seems you have a sore throat. Warm fluids and rest may help.
+SoreThroat,Feeling scratchy throat,It seems you have a sore throat. Warm fluids and rest may help.
+ShortnessOfBreath,I cannot breathe properly,⚠️ Shortness of breath may be serious. Seek medical attention if severe.
+ShortnessOfBreath,Feeling breathless,⚠️ Shortness of breath may be serious. Seek medical attention if severe.
+Fatigue,I feel very tired,It seems you are fatigued. Rest and hydration are recommended.
+Fatigue,Feeling weak and exhausted,It seems you are fatigued. Rest and hydration are recommended.
+Nausea,I feel nauseous,It seems you are feeling nauseous. Can you describe more about your symptoms?
+Nausea,Feeling like vomiting,It seems you are feeling nauseous. Can you describe more about your symptoms?
+Vomiting,I've been vomiting,It seems you are vomiting. Stay hydrated and rest. Seek medical help if severe.
+Vomiting,Throwing up repeatedly,It seems you are vomiting. Stay hydrated and rest. Seek medical help if severe.
+Diarrhea,Loose stools since morning,It seems you have diarrhea. Stay hydrated and monitor your condition.
+Diarrhea,Frequent watery stools,It seems you have diarrhea. Stay hydrated and monitor your condition.
+MuscleAches,Body aches all over,It seems you have muscle aches. Rest and hydration may help.
+MuscleAches,My muscles are sore,It seems you have muscle aches. Rest and hydration may help.
+Cold,Runny nose and sneezing,It seems you have a cold. Monitor symptoms and rest.
+Cold,Feeling congested and cold,It seems you have a cold. Monitor symptoms and rest.
+Dizziness,Feeling dizzy and lightheaded,⚠️ Dizziness can be serious. Please rest and seek help if persistent.
+Dizziness,Lightheadedness and fainting feeling,⚠️ Dizziness can be serious. Please rest and seek help if persistent.
+BackPain,Lower back pain,It seems you have back pain. Rest and gentle stretching may help.
+BackPain,My back hurts,It seems you have back pain. Rest and gentle stretching may help.
+StomachAche,Stomach hurts,It seems you have stomach pain. Monitor symptoms and rest.
+StomachAche,Abdominal cramps,It seems you have stomach pain. Monitor symptoms and rest.
+Rash,Red itchy rash,It seems you have a skin rash. Avoid scratching and monitor.
+Rash,Skin irritation with redness,It seems you have a skin rash. Avoid scratching and monitor.
+JointPain,Knee joint hurts,It seems you have joint pain. Rest and gentle exercises may help.
+JointPain,Joint stiffness and pain,It seems you have joint pain. Rest and gentle exercises may help.
+Insomnia,Cannot sleep at night,It seems you have sleep problems. Try relaxation techniques and sleep hygiene.
+Insomnia,Trouble falling asleep,It seems you have sleep problems. Try relaxation techniques and sleep hygiene.
+Allergies,Sneezing and itchy eyes,It seems you may have allergies. Avoid triggers and monitor symptoms.
+Allergies,Allergic reaction with sneezing,It seems you may have allergies. Avoid triggers and monitor symptoms.
+HeartPalpitations,Heart beating fast,⚠️ Heart palpitations can be serious. Monitor and seek help if severe.
+HeartPalpitations,Irregular heartbeat feeling,⚠️ Heart palpitations can be serious. Monitor and seek help if severe.
