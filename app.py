@@ -16,33 +16,31 @@ def home():
 def webhook():
     req = request.get_json()
 
-    # ---------------------------
-    # 1. Check for knowledge base answers first
-    # ---------------------------
-    knowledge = req.get("queryResult", {}).get("knowledgeAnswers", {}).get("answers", [])
-    if knowledge:
-        kb_answer = knowledge[0]["answer"]
-
-        # Extract only the clean answer
-        if "\nA:" in kb_answer:
-            kb_answer = kb_answer.split("\nA:")[1].split("\nQ:")[0].strip()
-
-        return jsonify({"fulfillmentText": kb_answer})
-
-    # ---------------------------
-    # 2. Handle structured triage intents
-    # ---------------------------
     parameters = req['queryResult']['parameters']
     intent_name = req['queryResult']['intent']['displayName']
     query_text = req['queryResult']['queryText']
 
-    symptom = parameters.get('symptom', '')
-    severity = parameters.get('severity', '')
-    duration = parameters.get('duration', '')
+    # ---------------------------
+    # 1. Try knowledge base first
+    # ---------------------------
+    knowledge = req.get("queryResult", {}).get("knowledgeAnswers", {}).get("answers", [])
+    if knowledge:
+        kb_answer = knowledge[0]["answer"]
+        if "\nA:" in kb_answer:
+            kb_answer = kb_answer.split("\nA:")[1].split("\nQ:")[0].strip()
+        # If KB answer is confident enough, respond
+        if kb_answer.strip():
+            return jsonify({"fulfillmentText": kb_answer})
 
-    if intent_name not in ["Default Fallback Intent"]:  # use your intents
+    # ---------------------------
+    # 2. Try structured triage intents
+    # ---------------------------
+    if intent_name.lower() != "default fallback intent":  # not fallback
+        symptom = parameters.get('symptom', '')
+        severity = parameters.get('severity', '')
+        duration = parameters.get('duration', '')
+
         triage_result = classify_triage(symptom.lower(), severity.lower(), duration.lower())
-
         if triage_result == "urgent":
             fulfillment_text = (
                 "Based on your symptoms, this may be urgent. "
@@ -59,11 +57,10 @@ def webhook():
                 "It seems like a mild condition. You can try resting and staying hydrated. "
                 "Let me know if you'd like help with anything else."
             )
-
         return jsonify({"fulfillmentText": fulfillment_text})
 
     # ---------------------------
-    # 3. Fallback to ChatGPT if no match
+    # 3. Fallback to ChatGPT for any unhandled queries
     # ---------------------------
     gpt_response = call_chatgpt(query_text)
 
@@ -79,15 +76,16 @@ def webhook():
 def call_chatgpt(user_input):
     try:
         response = openai.ChatCompletion.create(
-            model="gpt-3.5-turbo",   # or gpt-4 if enabled
+            model="gpt-3.5-turbo",  # or gpt-4 if enabled
             messages=[
                 {"role": "system", "content": "You are a helpful medical assistant. Always remind users to consult a doctor for serious conditions."},
                 {"role": "user", "content": user_input}
             ],
-            max_tokens=200
+            max_tokens=250
         )
         return response["choices"][0]["message"]["content"].strip()
     except Exception as e:
+        print("OpenAI Error:", e)
         return "Sorry, I couldn’t process your request right now."
 
 
@@ -97,7 +95,6 @@ def call_chatgpt(user_input):
 def save_unrecognised(query, response):
     file_path = "unrecognised.csv"
     file_exists = os.path.isfile(file_path)
-
     with open(file_path, mode="a", newline="", encoding="utf-8") as f:
         writer = csv.writer(f)
         if not file_exists:
@@ -111,7 +108,6 @@ def save_unrecognised(query, response):
 def classify_triage(symptom, severity, duration):
     red_flags = ['chest pain', 'shortness of breath', 'dizziness']
     severity_score = extract_severity_score(severity)
-
     if symptom in red_flags and severity_score >= 7:
         return "urgent"
     elif severity_score <= 3 and "day" in duration.lower():
