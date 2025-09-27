@@ -1,5 +1,6 @@
-flask==2.2.5
-requests==2.32.3
-google-cloud-dialogflow==2.25.4
-openai==0.28.0
-gunicorn==21.2.0
+flask
+requests
+google-cloud-dialogflow
+openai
+gunicorn
+
