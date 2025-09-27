@@ -16,26 +16,26 @@ def home():
 def webhook():
     req = request.get_json()
 
-    parameters = req['queryResult']['parameters']
-    intent_name = req['queryResult']['intent']['displayName']
-    query_text = req['queryResult']['queryText']
+    parameters = req['queryResult'].get('parameters', {})
+    intent_name = req['queryResult']['intent']['displayName'].lower()
+    query_text = req['queryResult'].get('queryText', '')
 
     # ---------------------------
-    # 1. Try knowledge base first
+    # 1. Knowledge base answer first
     # ---------------------------
     knowledge = req.get("queryResult", {}).get("knowledgeAnswers", {}).get("answers", [])
     if knowledge:
         kb_answer = knowledge[0]["answer"]
         if "\nA:" in kb_answer:
             kb_answer = kb_answer.split("\nA:")[1].split("\nQ:")[0].strip()
-        # If KB answer is confident enough, respond
-        if kb_answer.strip():
+        if kb_answer.strip():  # If KB answer exists, return it
             return jsonify({"fulfillmentText": kb_answer})
 
     # ---------------------------
-    # 2. Try structured triage intents
+    # 2. Triage intents
     # ---------------------------
-    if intent_name.lower() != "default fallback intent":  # not fallback
+    triage_intents = ["triageintent1", "triageintent2"]  # replace with your triage intent names
+    if intent_name in triage_intents:
         symptom = parameters.get('symptom', '')
         severity = parameters.get('severity', '')
         duration = parameters.get('duration', '')
@@ -60,13 +60,10 @@ def webhook():
         return jsonify({"fulfillmentText": fulfillment_text})
 
     # ---------------------------
-    # 3. Fallback to ChatGPT for any unhandled queries
+    # 3. Fallback → ChatGPT
     # ---------------------------
     gpt_response = call_chatgpt(query_text)
-
-    # Save unknown queries for training later
     save_unrecognised(query_text, gpt_response)
-
     return jsonify({"fulfillmentText": gpt_response})
 
 
@@ -76,7 +73,7 @@ def webhook():
 def call_chatgpt(user_input):
     try:
         response = openai.ChatCompletion.create(
-            model="gpt-3.5-turbo",  # or gpt-4 if enabled
+            model="gpt-3.5-turbo",
             messages=[
                 {"role": "system", "content": "You are a helpful medical assistant. Always remind users to consult a doctor for serious conditions."},
                 {"role": "user", "content": user_input}
